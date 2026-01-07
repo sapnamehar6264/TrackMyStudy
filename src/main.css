@@ -1,0 +1,9 @@
+/* Ensure the browser's viewport is white */
+html, body, #root { 
+  background-color: black; /* Pure white */
+  margin: 0;               /* Remove default browser margin */
+  padding: 0;              /* Remove default browser padding */
+  height: 100%;            /* Ensure they take up full height */
+  width: 100%;
+  overflow: hidden;
+}

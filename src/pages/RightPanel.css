@@ -1,0 +1,69 @@
+.right-panel {
+  width: 300px;
+  padding: 20px;
+  background: #ffffff;
+  border-left: 2px solid #eee;
+  display: flex;
+  justify-content: center;
+}
+
+/* Card */
+.calendar-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+/* Header */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day {
+  font-size: 13px;
+  color: #555;
+}
+
+.calendar-arrows span {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.calendar-arrows span:hover {
+  background: #f1e6fb;
+}
+
+/* Body */
+.calendar-body {
+  margin-top: 12px;
+}
+
+.month {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Calendar grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 12px;
+  gap: 6px;
+}
+
+.calendar-grid span {
+  padding: 6px 0;
+}
+
+.calendar-grid .date:hover {
+  background: #f1e6fb;
+  border-radius: 6px;
+  cursor: pointer;
+}

@@ -1,0 +1,50 @@
+.top-header {
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* Inner container controls spacing */
+.header-inner {
+  max-width: 1360px;      /* 🔑 increased */
+  margin: 0 auto;
+  padding: 0 40px;        /* 🔑 more breathing room */
+  display: flex;
+  align-items: center;
+}
+
+/* Search */
+.header-search-container input {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 280px;           /* 🔑 slightly wider */
+  height: 24px;
+  padding: 8px 14px;
+}
+
+.header-search-container input:focus {
+  outline: none;
+  border-color: #6c63ff;
+}
+
+
+/* Right side */
+.header-right-group {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Academic text */
+.header-academic-info p {
+  margin: 0;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Actions */
+.header-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

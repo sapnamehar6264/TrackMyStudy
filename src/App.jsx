@@ -8,14 +8,8 @@ import SignUp from "./pages/SignUp";
 function App(){
   return (
     <div>
-      <h1>Track My Study</h1>
-      <Navbar />
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
+      {/* <Navbar/> */}
+      <Dashboard />
     </div>
   );
 }
