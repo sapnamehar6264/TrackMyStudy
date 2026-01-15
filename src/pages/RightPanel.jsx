@@ -15,7 +15,7 @@ const RightPanel = () => {
           <p className="month">May 2022</p>
           <div className="calendar-grid">
             <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
-            {Array.from({ length: 31 }, (_, i) => (
+            {Array.from({ length: 30 }, (_, i) => (
               <span key={i} className="date">{i + 1}</span>
             ))}
           </div>

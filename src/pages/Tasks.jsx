@@ -1,49 +1,81 @@
-import React, {useState} from 'react';
+import { useState } from "react";
+import "./Tasks.css";
+
 const Tasks = () => {
-  //Define state variables 
   const [tasks, setTasks] = useState([]);
-  const [tasksText, setTasksText] = useState('');
-  
-  //Logic to handle adding new task
+  const [taskTitle, setTaskTitle] = useState("");
+  const [isImportant, setIsImportant] = useState(false);
 
   const addTask = () => {
-    const trimmedText = tasksText.trim();
-    if (trimmedText === '') {
-      return; // Prevent adding empty tasks
-    }
+    if (!taskTitle.trim()) return;
 
-    setTasks([...tasks, trimmedText]);
-    setTasksText(''); // Clear input field after adding
-  }
+    const newTask = {
+      id: Date.now(),
+      title: taskTitle,
+      isImportant,
+      completed: false,
+      completedViaFocus: false
+    };
+
+    // safer state update
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+    setTaskTitle("");
+    setIsImportant(false);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") addTask();
+  };
+
   return (
-    <div className="tasks-page">
-      <h1>📝 My Task List</h1>
-      <div className="task-input-area">
-        <input
-          type="text"
-          placeholder="Enter a new task"
-          value={tasksText}
-          onChange={(e) => setTasksText(e.target.value)}
-          className="task-input"
-        />
-        <button
-          className="add-task-button"
-         onClick={addTask}
-        > Add Task </button>
-      </div>
+    <div className="tasks-container">
+      <div className="tasks-content">
+        <h2>Your Tasks</h2>
 
-      <div className="task-list-container">
-        <h2>Pending Task ({tasks.length})</h2>
-        <ul className="task-list">
-          {tasks.map((task, index) => (
-            <li key={index} className="task-item">
-              {task}
-            </li>
+        {/* Add Task Section */}
+        <div className="add-task">
+          <div className="input-button-wrapper">
+            <input
+              type="text"
+              placeholder="Enter a task..."
+              value={taskTitle}
+              onChange={(e) => setTaskTitle(e.target.value)}
+              onKeyDown={handleKeyPress}
+            />
+            <button onClick={addTask}>Add</button>
+          </div>
+
+          <label className="important-checkbox">
+            <input
+              type="checkbox"
+              checked={isImportant}
+              onChange={() => setIsImportant(!isImportant)}
+            />
+            Mark Important 🚩
+          </label>
+        </div>
+
+        {/* Task List */}
+        <div className="task-list">
+          {tasks.length === 0 && (
+            <p className="empty-text">No tasks added yet</p>
+          )}
+
+          {tasks.map((task) => (
+            <div
+              key={task.id}
+              className={`task-card ${task.isImportant ? "important" : ""}`}
+            >
+              <span className="task-title">{task.title}</span>
+              <span className="task-status">
+                {task.completed ? "✅ Completed" : "⏳ Pending"}
+              </span>
+            </div>
           ))}
-        </ul>
-
+        </div>
       </div>
     </div>
   );
-}
+};
+
 export default Tasks;

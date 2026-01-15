@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 const Sidebar = () => {
   return(
@@ -6,27 +7,29 @@ const Sidebar = () => {
           <h2>TrackMyStudy</h2>
       </div>
       <nav className="sidebar-nav">
-        <a href="/dashboard" className="nav-item">
-          <span role="img" aria-label="Dashboard Icon">📊</span>
-          Dashboard
-        </a>
 
-        <a href="/focus" className="nav-item">
-          <span role="img" aria-label="Focus Icon">⏳</span>
-          Focus
-        </a>
+        <NavLink to="/dashboard" className="nav-item">
+          <span>📊</span>
+          <span>Dashboard</span>
+        </NavLink>
 
-        <a href="/tasks" className="nav-item">
-          <span role="img" aria-label="Tasks Icon">🗓️</span>
-          Tasks
-        </a>
+        <NavLink to="/focus" className="nav-item">
+          <span>⏳</span>
+          <span>Focus</span>
+        </NavLink>
+
+        <NavLink to="/tasks" className="nav-item">
+          <span>🗓️</span>
+          <span>Tasks</span>
+        </NavLink>
 
         <p>Settings</p>
 
-        <a href="/logout" className="nav-item">
-          <span role="img" aria-label="Logout Icon">↩️</span>
-          Logout
-        </a>
+        <NavLink to="/logout" className="nav-item">
+          <span>↩️</span>
+          <span>Logout</span>
+        </NavLink>
+
         </nav>
         <div className="sidebar-footer">
           <div className="illustration-placeholder">

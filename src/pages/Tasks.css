@@ -1,0 +1,145 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ===== FULL SCREEN BACKGROUND ===== */
+.tasks-container {
+  min-height: 100vh;
+  width: 100%;
+  padding: 32px;
+  color: white;
+
+  background-image: url("/tasks-bgs.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+}
+
+/* Dark overlay */
+.tasks-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.tasks-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== MAIN CONTENT CARD ===== */
+.tasks-content {
+  max-width: 850px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.183);
+  padding: 32px;
+  border-radius: 20px;
+}
+
+/* ===== TITLE ===== */
+.tasks-content h2 {
+  font-size: 30px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+/* ===== ADD TASK BOX ===== */
+.add-task {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 28px;
+}
+
+/* INPUT + BUTTON ROW */
+.input-button-wrapper {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.input-button-wrapper input {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-button-wrapper button {
+  padding: 14px 22px;
+  border-radius: 12px;
+  border: none;
+  background: #8a2be2;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.input-button-wrapper button:hover {
+  background: #f7e0ff;
+  color: #8a2be2;
+}
+
+/* IMPORTANT CHECKBOX */
+.important-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ===== TASK LIST ===== */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* TASK CARD */
+.task-card {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 16px 18px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.task-card:hover {
+  background: rgba(255, 255, 255, 0.256);
+}
+
+/* IMPORTANT TASK */
+.task-card.important {
+  border-left: 5px solid #ef4444;
+}
+
+/* TEXT */
+.task-title {
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.task-status {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* EMPTY STATE */
+.empty-text {
+  opacity: 0.6;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+}

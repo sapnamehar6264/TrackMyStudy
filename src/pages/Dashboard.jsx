@@ -8,11 +8,8 @@ import RightPanel from './RightPanel';
 const Dashboard = ({ username = "Sapna" }) => {
   return (
     <div className="dashboard-container">
-      <Sidebar />
-
       <div className="content-area">
         <Header username={username} />
-
         <div className="content-body">
           <MidSection />
           <RightPanel />

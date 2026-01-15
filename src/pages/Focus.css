@@ -1,0 +1,118 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+.focus-container {
+  min-height: 100vh;
+  background-image: url("/bgImage.jpg"); /* put image in public folder */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  padding: 20px;
+
+  /* dark overlay for readability */
+  position: relative;
+}
+
+.focus-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 0;
+}
+
+.focus-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* BIG FOCUS TITLE */
+.focus-title {
+  font-size: 72px;
+  font-weight: 800;
+  letter-spacing: 6px;
+  margin-bottom: 30px;
+}
+
+/* Card */
+.main-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 660px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* HUGE TIMER */
+.timer {
+  font-size: 64px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Task text */
+.focus-task {
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  text-align: center;
+  color: white;
+}
+
+/* Buttons side by side */
+.buttons-row {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+}
+
+.start-focus-button,
+.pomodoro-button {
+  flex: 1; /* equal width buttons */
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.start-focus-button {
+  background: #8a2be2;
+  color: white;
+}
+
+.start-focus-button:hover {
+  background: #f7e0ff;
+  color: #8a2be2;
+}
+
+.pomodoro-button {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.pomodoro-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Bottom quote */
+.focus-quote {
+  margin-top: 30px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}

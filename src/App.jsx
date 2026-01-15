@@ -1,15 +1,43 @@
-import {Routes, Route} from 'react-router-dom';
-import Navbar from './components/Navbar';
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import Dashboard from "./pages/Dashboard";
 import Tasks from "./pages/Tasks";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import Focus from "./pages/Focus";
+import Sidebar from "./pages/Sidebar";
 
-function App(){
+function App() {
+  const [tasks, setTasks] = useState([]);
+  const [streak, setStreak] = useState(0);
+
   return (
-    <div>
-      {/* <Navbar/> */}
-      <Dashboard />
+    <div style={{ display: "flex" }}>
+      <Sidebar />
+
+      <div style={{ flex: 1 }}>
+        <Routes>
+          <Route
+            path="/dashboard"
+            element={<Dashboard streak={streak} />}
+          />
+
+          <Route
+            path="/tasks"
+            element={<Tasks tasks={tasks} setTasks={setTasks} />}
+          />
+
+          <Route
+            path="/focus"
+            element={
+              <Focus
+                tasks={tasks}
+                setTasks={setTasks}
+                setStreak={setStreak}
+              />
+            }
+          />
+        </Routes>
+      </div>
     </div>
   );
 }

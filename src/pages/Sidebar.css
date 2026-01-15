@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Pushes header/nav up, footer down */
-  border-radius: 0 30px;
   width: 250px; /* Adjust width to match the visual */
   height: 100vh;
   padding: 20px 0; /* Padding top/bottom, zero on sides */
@@ -50,6 +49,8 @@ h2 {
   background-color: #f7e0ff; /* Light purple from the image */
   color: #8a2be2; /* Darker purple text/icon */
   font-weight: 600;
+  margin-left: 15px;
+  border-radius: 10px;
 }
 
 /* Styling the footer (illustration and button) */
