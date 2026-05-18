@@ -14,8 +14,8 @@ const Header = ({username}) => {
                     </div>
 
                     <div className="header-actions-group">
+                        <span>🔥</span>
                         <span>🔔</span>
-                        <span>⚙️</span>
                     <div className="header-user-profile">{initial}</div>
                 </div>
             </div>

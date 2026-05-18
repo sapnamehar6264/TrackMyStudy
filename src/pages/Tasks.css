@@ -24,7 +24,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.174);
   z-index: 0;
 }
 
@@ -37,7 +37,7 @@
 .tasks-content {
   max-width: 850px;
   margin: auto;
-  background: rgba(0, 0, 0, 0.183);
+  background: rgba(0, 0, 0, 0.6);
   padding: 32px;
   border-radius: 20px;
 }
@@ -117,7 +117,7 @@
 }
 
 .task-card:hover {
-  background: rgba(255, 255, 255, 0.256);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 /* IMPORTANT TASK */
@@ -127,13 +127,53 @@
 
 /* TEXT */
 .task-title {
-  font-size: 16px;
+  font-size: 18px;
+  flex: 1;
+  margin-right: auto;
   word-break: break-word;
+}
+
+.task-focus-display {
+  font-size: 24px;
+  font-weight: 900;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 6px;
 }
 
 .task-status {
   font-size: 14px;
   opacity: 0.85;
+}
+
+.status-container {
+  display: flex;
+  align-items: center;
+  min-width: 100px; /* Prevents layout shifting */
+  justify-content: flex-end;
+}
+
+/* Hide delete button by default */
+.delete-btn {
+  display: none;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When the status-container is hovered: */
+
+/* 1. Hide the status text */
+.status-container:hover .task-status {
+  display: none;
+}
+
+/* 2. Show the delete button */
+.status-container:hover .delete-btn {
+  display: block;
 }
 
 /* EMPTY STATE */

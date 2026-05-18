@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dashboard.css';
-import Sidebar from './Sidebar';
+import Sidebar from '../components/Sidebar';
 import MidSection from './MidSection';
 import Header from '../components/Header';
 import RightPanel from './RightPanel';

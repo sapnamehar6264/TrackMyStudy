@@ -4,6 +4,7 @@ import "./Tasks.css";
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
   const [taskTitle, setTaskTitle] = useState("");
+  const [focusTime, setFocusTime] = useState("");
   const [isImportant, setIsImportant] = useState(false);
 
   const addTask = () => {
@@ -12,19 +13,26 @@ const Tasks = () => {
     const newTask = {
       id: Date.now(),
       title: taskTitle,
+      focusTime,
       isImportant,
       completed: false,
-      completedViaFocus: false
+      completedViaFocus: false,
+      completedSessions: 0
     };
 
     // safer state update
     setTasks((prevTasks) => [...prevTasks, newTask]);
     setTaskTitle("");
+    setFocusTime("");
     setIsImportant(false);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") addTask();
+  };
+
+  const deleteTask = (id) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
   return (
@@ -42,6 +50,12 @@ const Tasks = () => {
               onChange={(e) => setTaskTitle(e.target.value)}
               onKeyDown={handleKeyPress}
             />
+            <input 
+              type="number"
+              placeholder="Enter focus time (min)"
+              value={focusTime}
+              onChange={(e) => setFocusTime(e.target.value)}
+            />
             <button onClick={addTask}>Add</button>
           </div>
 
@@ -53,6 +67,7 @@ const Tasks = () => {
             />
             Mark Important 🚩
           </label>
+
         </div>
 
         {/* Task List */}
@@ -65,11 +80,16 @@ const Tasks = () => {
             <div
               key={task.id}
               className={`task-card ${task.isImportant ? "important" : ""}`}
-            >
+            >  
+              {task.focusTime && (<span className="task-focus-display">{task.focusTime}m</span>)}
               <span className="task-title">{task.title}</span>
-              <span className="task-status">
-                {task.completed ? "✅ Completed" : "⏳ Pending"}
-              </span>
+              <div className="status-container">
+                <span className="task-status">
+                  {task.completed ? "✅ Completed" : "⏳...."}
+                </span>
+
+                <button className="delete-btn" onClick={() => deleteTask(task.id)}> 🗑️ </button>
+              </div>
             </div>
           ))}
         </div>

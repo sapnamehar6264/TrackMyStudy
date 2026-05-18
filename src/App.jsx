@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Tasks from "./pages/Tasks";
 import Focus from "./pages/Focus";
-import Sidebar from "./pages/Sidebar";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   const [tasks, setTasks] = useState([]);
