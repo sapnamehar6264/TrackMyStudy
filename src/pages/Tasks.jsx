@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Tasks.css";
 
 const Tasks = () => {
-  const [tasks, setTasks] = useState([]);
+  // 1. Smart Initialization: Load from localStorage RIGHT HERE
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : []; 
+  });
   const [taskTitle, setTaskTitle] = useState("");
   const [focusTime, setFocusTime] = useState("");
   const [isImportant, setIsImportant] = useState(false);
+  const [search, setSearch] = useState("");
+  
+  //Save tasks to localstorage
+  // This block keeps our tasks saved even if the user refreshes. Leave alone!
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const addTask = () => {
     if (!taskTitle.trim()) return;
@@ -34,11 +45,24 @@ const Tasks = () => {
   const deleteTask = (id) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
+  
+  //Filters the tasks.
+  const filteredTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="tasks-container">
       <div className="tasks-content">
         <h2>Your Tasks</h2>
+
+        <input
+          type="text"
+          placeholder="Search task..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="search-bar"
+        />
 
         {/* Add Task Section */}
         <div className="add-task">
@@ -76,7 +100,12 @@ const Tasks = () => {
             <p className="empty-text">No tasks added yet</p>
           )}
 
-          {tasks.map((task) => (
+          {/* 3. FIXED: If user is searching but gets zero matches */}
+          {tasks.length > 0 && filteredTasks.length === 0 && (
+            <p className="empty-text">No matching tasks found 🔍</p>
+          )}
+
+          {filteredTasks.map((task) => (
             <div
               key={task.id}
               className={`task-card ${task.isImportant ? "important" : ""}`}

@@ -183,3 +183,27 @@
   text-align: center;
   margin-top: 20px;
 }
+
+.search-bar {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+/* Make placeholder text slightly transparent white */
+.search-bar::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Glow up on click */
+.search-bar:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 2px #8a2be2;
+}
