@@ -26,7 +26,7 @@ const Tasks = () => {
       title: taskTitle,
       focusTime,
       isImportant,
-      completed: false,
+      status: "pending",
       completedViaFocus: false,
       completedSessions: 0
     };
@@ -114,7 +114,9 @@ const Tasks = () => {
               <span className="task-title">{task.title}</span>
               <div className="status-container">
                 <span className="task-status">
-                  {task.completed ? "✅ Completed" : "⏳...."}
+                  {task.status === "pending" && "⏳ Pending"}
+                  {task.status === "active" && "🔥 Active Now"}
+                  {task.status === "completed" && "✅ Completed"}
                 </span>
 
                 <button className="delete-btn" onClick={() => deleteTask(task.id)}> 🗑️ </button>
